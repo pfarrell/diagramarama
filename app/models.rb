@@ -1,3 +1,7 @@
+require 'logger'
+require 'sequel'
+require 'pg'
+
 $console = ENV['RACK_ENV'] == 'development' ? Logger.new(STDOUT) : nil
 DB = Sequel.connect(
   ENV['DIAGRAMARAMA_DB'] || 'postgres://localhost/diagramarama',
