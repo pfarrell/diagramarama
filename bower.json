@@ -1,9 +1,10 @@
 {
-  "name": "APP",
+  "name": "diaramarama",
   "version": "0.0.1",
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "js-sequence-diagrams": "~1.0.6"
+    "js-sequence-diagrams": "~1.0.6",
+    "ace": "~1.2.3"
   },
   "homepage": "https://github.com/pfarrell/sinatra-shell",
   "authors": [
