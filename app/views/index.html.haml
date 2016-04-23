@@ -27,7 +27,8 @@
 
     // Setup the editor diagram
     var editor = ace.edit(editor_div.get(0));
-    editor.setTheme("ace/theme/crimson_editor");
+    //editor.setTheme("ace/theme/crimson_editor");
+    editor.setTheme("ace/theme/cobalt");
     editor.getSession().setMode("ace/mode/asciidoc");
     editor.getSession().on('change', _.debounce(update_diagram, 100));
 
