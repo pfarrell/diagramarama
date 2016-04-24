@@ -10,16 +10,22 @@ class Diagramarama < Sinatra::Application
   end
 
   post "/diagram" do
-    d = Diagram.new.merger_params(params)
+    content_type :json
+    d = Diagram.new.merge_params(params).save
     respond_to do |wants|
       wants.js { d.to_json }
+      wants.json { d.to_json }
+      wants.html { d.to_json }
     end
   end
 
   put "/diagram/:id" do
+    content_type :json
     d = Diagram[params[:id]].merge_params(params).save
     respond_to do |wants|
       wants.js { d.to_json }
+      wants.json { d.to_json }
+      wants.html { d.to_json }
     end
   end
 
@@ -27,6 +33,8 @@ class Diagramarama < Sinatra::Application
     Diagram[params[:id]].destroy
     respond_to do |wants|
       wants.js { 200 }
+      wants.json { 200 }
+      wants.html { 200 }
     end
   end
 end
