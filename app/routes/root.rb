@@ -1,5 +1,7 @@
-class App < Sinatra::Application
+class Diagramarama < Sinatra::Application
   get "/" do
-    haml :index, locals: {msg: MyModel.new.hello(params[:name])} 
+    respond_to do |wants|
+      wants.html { haml :index }
+    end
   end
 end

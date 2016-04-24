@@ -12,6 +12,7 @@ gem 'pg'
 gem 'haml'
 
 group :development do
+  gem 'test-unit'
   gem 'rspec'
   gem 'simplecov'
   gem 'byebug'
