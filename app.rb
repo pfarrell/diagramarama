@@ -1,3 +1,4 @@
+$: << File.expand_path('../lib', __FILE__)
 $: << File.expand_path('../app', __FILE__)
 
 require 'sinatra'
@@ -7,7 +8,7 @@ require 'sinatra/cookies'
 require 'securerandom'
 require 'haml'
 
-class App < Sinatra::Application
+class Diagramarama < Sinatra::Application
   helpers Sinatra::UrlForHelper
   helpers Sinatra::Cookies
   register Sinatra::RespondTo
@@ -21,5 +22,6 @@ class App < Sinatra::Application
   end
 end
 
+require 'editable'
 require 'models'
 require 'routes'
