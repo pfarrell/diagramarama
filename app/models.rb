@@ -18,4 +18,4 @@ DB.pool.connection_validation_timeout = 300
 Sequel::Model.plugin :timestamps
 Sequel::Model.plugin :json_serializer
 
-require 'models/my_model'
+require 'models/diagram'
