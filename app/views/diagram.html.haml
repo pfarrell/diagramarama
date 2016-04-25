@@ -3,30 +3,37 @@
 .row
   .col-xs-12#mydiagram
     .col-xs-3
-      <div class='editor'></div>
-      .link
-        %select.theme
-          %option{value:"simple"}
-            Simple
-          %option{value:"hand", selected: true}
-            Hand drawn
-        %a.download{href: "#"}
-          Download
-        %a.btn.btn-primary{ }
-          Save
-
+      %form#editor
+        <div class='editor'>#{diagram && diagram.text}</div>
+        .link
+          %select.theme{name: "theme"}
+            %option{value:"simple"}
+              Simple
+            %option{value:"hand", selected: true}
+              Hand drawn
+          %a.download{href: "#"}
+            Download
+          %button.btn.btn-primary{ onclick: "save_diagram()" }
+            Save
     .col-xs-9.diagram
 -if diagram.nil?
   :javascript
     function save_diagram() {
+      var editor_div = $(".editor");
+      var editor = ace.edit(editor_div.get(0));
       var url = "/diagram"
-      post(form. url)
+      var form = $('#editor');
+      post(form, editor.getValue(), url)
     }
 -else
   :javascript
-    function save_diagram() {
+    function save_diagram(form) {
+      var editor_div = $(".editor");
+      var editor = ace.edit(editor_div.get(0));
+      var url = "/diagram"
+      var form = $('#editor');
       var url = "/diagram/#{diagram.id}"
-      put(form, url)
+      put(form, editor.getValue(), url)
     }
 :javascript
 
@@ -97,11 +104,12 @@
     }
   }
 
-
-  function post(form, url) {
+  function post(form, editor, url) {
+    var data = form.serialize();
+    data = data + "&text=" + editor;
     $.ajax( {
         url: url,
-        data: form.serialize(), 
+        data: data, 
         method: 'post',
     })
     .done(function(msg) {

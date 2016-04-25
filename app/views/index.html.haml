@@ -3,4 +3,6 @@
 -diagrams.each do |diagram|
   .diagram
     %a{href: url_for("/diagram/#{diagram.id}")}
-      =diagram.title
+      =diagram.title || "untitled"
+    %span
+      last edited #{diagram.updated_at || diagram.created_at}
