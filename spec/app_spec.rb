@@ -5,4 +5,10 @@ describe 'Diagramarama' do
     get "/"
     expect(last_response).to be_ok
   end
+
+  it "has a create diagram page" do
+    get "/diagram"
+    expect(last_response).to be_ok
+  end
+
 end

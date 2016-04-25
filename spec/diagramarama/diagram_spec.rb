@@ -5,6 +5,8 @@ describe Diagram do
   let(:diagram) { Diagram.new(title: 'test diagram', text: 'test').save }
 
   it 'retrieves diagrams' do
+    require 'byebug'
+    byebug;1
     get "/diagram/#{diagram.id}"
     expect(last_response.header['Content-Type']).to include 'application/json'
   end

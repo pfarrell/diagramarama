@@ -1,11 +1,19 @@
 class Diagramarama < Sinatra::Application
+
+  get "/diagram" do
+    respond_to do |wants|
+      wants.html { haml :diagram, locals: { diagram: nil } }
+    end
+  end
+
   get "/diagram/:id" do
-    content_type :json
+    require 'byebug'
+    byebug;1
     d = Diagram[params[:id]]
     respond_to do |wants|
       wants.js { d.to_json }
       wants.json { d.to_json }
-      wants.html { d.to_json }
+      wants.html { haml :diagram, locals: { diagram: d } }
     end
   end
 
