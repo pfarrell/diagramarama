@@ -7,8 +7,6 @@ class Diagramarama < Sinatra::Application
   end
 
   get "/diagram/:id" do
-    require 'byebug'
-    byebug;1
     d = Diagram[params[:id]]
     respond_to do |wants|
       wants.js { d.to_json }

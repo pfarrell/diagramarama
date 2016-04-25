@@ -1,5 +1,5 @@
 -unless diagram.nil?
-  %hidden{name: id, value: "#{diagram.id}"}
+  %hidden{name: "id", value: "#{diagram.id}"}
 .row
   .col-xs-12#mydiagram
     .col-xs-3
@@ -16,7 +16,6 @@
           Save
 
     .col-xs-9.diagram
--byebug;2
 -if diagram.nil?
   :javascript
     function save_diagram() {
