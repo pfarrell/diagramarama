@@ -1,5 +1,3 @@
--unless diagram.nil?
-  %hidden{name: "id", value: "#{diagram.id}"}
 .row
   .col-xs-12#mydiagram
     .col-xs-3
@@ -102,33 +100,4 @@
         throw err;
       }
     }
-  }
-
-  function post(form, editor, url) {
-    var data = form.serialize();
-    data = data + "&text=" + editor;
-    $.ajax( {
-        url: url,
-        data: data, 
-        method: 'post',
-    })
-    .done(function(msg) {
-    });
-  }
-
-  function del(url) {
-    $.ajax({
-      url: url,
-      method: 'delete'
-    });
-  }
-
-  function put(form, url) {
-    $.ajax( {
-      url: url,
-      data: form.serialize(),
-      method: 'put',
-    })
-    .done(function(msg) {
-    });
   }

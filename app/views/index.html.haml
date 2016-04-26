@@ -1,8 +1,16 @@
 %a.btn.btn-primary{href: "/diagram"}
   New Diagram
 -diagrams.each do |diagram|
-  .diagram
+  .diagram{class: "diagram-#{diagram.id}"}
     %a{href: url_for("/diagram/#{diagram.id}")}
       =diagram.title || "untitled"
     %span
       last edited #{diagram.updated_at || diagram.created_at}
+    %span
+      %input.btn.btn-warning{type: 'button', onClick:"if(confirm('delete diagram?')) {delete_diagram(#{diagram.id})}", value: "delete"}
+:javascript
+  function delete_diagram(id) {
+    var url = "#{url_for('/diagram/')}" + id;
+    $('.diagram-' + id).remove();
+    return del(url);
+  }
