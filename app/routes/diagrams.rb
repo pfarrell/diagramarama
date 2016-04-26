@@ -37,7 +37,6 @@ class Diagramarama < Sinatra::Application
   end
 
   put "/diagram/:id" do
-    content_type :json
     d = Diagram[params[:id]].merge_params(params).save
     respond_to do |wants|
       wants.js { d.to_json }
