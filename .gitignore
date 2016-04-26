@@ -1,5 +1,6 @@
 public/libs
 vendor
-coverage
 .bundle
 .byebug_history
+coverage/**/*
+!coverage/coverage-badge.png
