@@ -15,6 +15,7 @@ group :development do
   gem 'test-unit'
   gem 'rspec'
   gem 'simplecov'
+  gem 'simplecov-badge'
   gem 'byebug'
   gem 'shotgun'
 end
