@@ -16,12 +16,12 @@ describe Diagram do
   end
 
   it 'creates diagrams' do
-    post "/diagram", {title: "test diagram", text: "test"}
+    post "/diagram", {title: "test diagram", text: "title: test diagram\ntest"}
     expect(last_response.header['Content-Type']).to include 'application/json'
     id=JSON.parse(last_response.body)['id']
     ret = Diagram[id.to_i]
     expect(ret.title).to eq "test diagram"
-    expect(ret.text).to eq "test"
+    expect(ret.text).to eq "title: test diagram\ntest"
   end
 
   it 'updates diagrams' do
