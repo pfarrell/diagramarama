@@ -7,8 +7,10 @@
           %select.theme{name: "theme"}
             %option{value:"simple"}
               Simple
-            %option{value:"hand", selected: true}
+            %option{value:"hand"}
               Hand drawn
+            %option{value:"pat", selected: true}
+              Pat Custom
           %a.download{href: "#"}
             Download
           %a.btn.btn-primary{ onclick: "save_diagram()" }
