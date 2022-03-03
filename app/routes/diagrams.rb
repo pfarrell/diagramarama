@@ -10,18 +10,12 @@ class Diagramarama < Sinatra::Application
   end
 
   get "/diagram" do
-    respond_to do |wants|
-      wants.html { haml :diagram, locals: { diagram: nil } }
-    end
+    haml :diagram, locals: { diagram: nil }
   end
 
   get "/diagram/:id" do
     d = Diagram[params[:id]]
-    respond_to do |wants|
-      wants.js { d.to_json }
-      wants.json { d.to_json }
-      wants.html { haml :diagram, locals: { diagram: d } }
-    end
+    haml :diagram, locals: { diagram: d }
   end
 
   post "/diagram" do
@@ -29,29 +23,17 @@ class Diagramarama < Sinatra::Application
     d = Diagram.new.merge_params(params)
     d.title = extract_title(params[:text])
     d.save
-    respond_to do |wants|
-      wants.js { d.to_json }
-      wants.json { d.to_json }
-      wants.html { d.to_json }
-    end
+    d.to_json
   end
 
   put "/diagram/:id" do
     content_type :json
     d = Diagram[params[:id]].merge_params(params).save
-    respond_to do |wants|
-      wants.js { d.to_json }
-      wants.json { d.to_json }
-      wants.html { d.to_json }
-    end
+    d.to_json
   end
 
   delete "/diagram/:id" do
     Diagram[params[:id]].destroy
-    respond_to do |wants|
-      wants.js { 200 }
-      wants.json { 200 }
-      wants.html { 200 }
-    end
+    200
   end
 end
